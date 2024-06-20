@@ -7,6 +7,8 @@ import Logout from "./components/logout";
 import Home from "./Home";
 import CreateUserPage from "./pages/CreateUserPage";
 import DeltagereListTable from "./pages/ShowAllUsers";
+import DeltagerResultaterPage from "./pages/DeltagerResultaterPage";
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { SnackbarProvider } from "./context/SnackbarProvider";
 const theme = createTheme({
@@ -24,6 +26,11 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+
+            <Route
+              path="/deltager/:deltagerId/resultater"
+              element={<DeltagerResultaterPage />}
+            />
 
             <Route path="/deltagere" element={<DeltagereListTable />} />
             <Route path="/opret" element={<CreateUserPage />} />

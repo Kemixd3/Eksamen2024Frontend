@@ -16,6 +16,7 @@ import { API_URL } from "../settings";
 import FilterForm from "./FilterComponent";
 import { useSnackbar } from "../context/SnackbarProvider";
 import DeltagerResultatDialog from "./DeltagerResultatDialog";
+import { useNavigate } from "react-router-dom";
 
 export default function DeltagereListTable() {
   const [deltagere, setDeltagere] = useState([]);
@@ -23,7 +24,7 @@ export default function DeltagereListTable() {
   const [openDialog, setOpenDialog] = useState(false);
   const [deltagerToUpdate, setDeltagerToUpdate] = useState(null);
   const [openResultatDialog, setOpenResultatDialog] = useState(false);
-
+  const Navigate = useNavigate();
   const fetchDeltagere = async (filters) => {
     const query = new URLSearchParams(filters).toString();
     try {
@@ -80,6 +81,10 @@ export default function DeltagereListTable() {
   const handleUserCreated = () => {
     fetchDeltagere({});
     handleCloseDialog();
+  };
+
+  const navigateToResultaterPage = (deltagerId) => {
+    Navigate(`/deltager/${deltagerId}/resultater`);
   };
 
   return (
@@ -164,6 +169,15 @@ export default function DeltagereListTable() {
                     onClick={() => handleOpenResultatDialog(deltager)}
                   >
                     Tilføj Resultat
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => navigateToResultaterPage(deltager.id)}
+                    style={{ marginLeft: 10 }}
+                  >
+                    Se Resultater
                   </Button>
                 </TableCell>
               </TableRow>
