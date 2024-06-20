@@ -109,6 +109,7 @@ export default function CollapsibleTable({ fetchKey }) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data, "DATA");
         setDeltagere(data);
       } catch (error) {
         console.error("Error fetching deltagere:", error);

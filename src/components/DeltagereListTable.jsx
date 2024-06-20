@@ -15,12 +15,14 @@ import {
 import { API_URL } from "../settings";
 import FilterForm from "./FilterComponent";
 import { useSnackbar } from "../context/SnackbarProvider";
+import DeltagerResultatDialog from "./DeltagerResultatDialog";
 
 export default function DeltagereListTable() {
   const [deltagere, setDeltagere] = useState([]);
   const { showSnackbar } = useSnackbar();
   const [openDialog, setOpenDialog] = useState(false);
   const [deltagerToUpdate, setDeltagerToUpdate] = useState(null);
+  const [openResultatDialog, setOpenResultatDialog] = useState(false);
 
   const fetchDeltagere = async (filters) => {
     const query = new URLSearchParams(filters).toString();
@@ -65,8 +67,14 @@ export default function DeltagereListTable() {
   };
 
   const handleCloseDialog = () => {
-    setDeltagerToUpdate(null);
+    //setDeltagerToUpdate(null);
     setOpenDialog(false);
+    setOpenResultatDialog(false);
+  };
+
+  const handleOpenResultatDialog = (deltager) => {
+    setDeltagerToUpdate(deltager);
+    setOpenResultatDialog(true); // Open resultat dialog
   };
 
   const handleUserCreated = () => {
@@ -150,6 +158,13 @@ export default function DeltagereListTable() {
                   >
                     Slet
                   </Button>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => handleOpenResultatDialog(deltager)}
+                  >
+                    Tilføj Resultat
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -158,6 +173,13 @@ export default function DeltagereListTable() {
       </TableContainer>
       <DeltagerDialog
         open={openDialog}
+        handleClose={handleCloseDialog}
+        deltagerToUpdate={deltagerToUpdate}
+        onUserCreated={handleUserCreated}
+      />
+
+      <DeltagerResultatDialog
+        open={openResultatDialog}
         handleClose={handleCloseDialog}
         deltagerToUpdate={deltagerToUpdate}
         onUserCreated={handleUserCreated}
