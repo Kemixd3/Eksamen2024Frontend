@@ -104,12 +104,11 @@ export default function CollapsibleTable({ fetchKey }) {
   useEffect(() => {
     async function fetchDeltagere() {
       try {
-        const response = await fetch(API_URL + "/api/deltagere"); // Replace with your actual backend endpoint
+        const response = await fetch(API_URL + "/api/deltagere");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data, "DATA");
         setDeltagere(data);
       } catch (error) {
         console.error("Error fetching deltagere:", error);

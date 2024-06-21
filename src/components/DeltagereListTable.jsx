@@ -75,7 +75,7 @@ export default function DeltagereListTable() {
 
   const handleOpenResultatDialog = (deltager) => {
     setDeltagerToUpdate(deltager);
-    setOpenResultatDialog(true); // Open resultat dialog
+    setOpenResultatDialog(true);
   };
 
   const handleUserCreated = () => {

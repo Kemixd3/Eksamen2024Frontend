@@ -1,8 +1,29 @@
-import React, { useState } from "react";
-import { Box, Button, TextField, MenuItem, Grid } from "@mui/material";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import {
+  Box,
+  Button,
+  TextField,
+  MenuItem,
+  Grid,
+  SelectChangeEvent,
+} from "@mui/material";
 
-export default function FilterForm({ onFilter }) {
-  const [filters, setFilters] = useState({
+interface FilterFormProps {
+  onFilter: (filters: Filters) => void;
+}
+
+interface Filters {
+  køn: string;
+  minAlder: string;
+  maxAlder: string;
+  klub: string;
+  disciplin: string;
+  navn: string;
+  alderGroup: string;
+}
+
+const FilterForm: React.FC<FilterFormProps> = ({ onFilter }) => {
+  const [filters, setFilters] = useState<Filters>({
     køn: "",
     minAlder: "",
     maxAlder: "",
@@ -12,15 +33,21 @@ export default function FilterForm({ onFilter }) {
     alderGroup: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | { name?: string | undefined; value: unknown }
+    >
+  ) => {
     const { name, value } = e.target;
     setFilters({
       ...filters,
-      [name]: value,
+      [name as string]: value as string,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onFilter(filters);
   };
@@ -125,4 +152,6 @@ export default function FilterForm({ onFilter }) {
       </Grid>
     </Box>
   );
-}
+};
+
+export default FilterForm;

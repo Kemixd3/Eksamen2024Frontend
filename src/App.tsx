@@ -26,17 +26,13 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-
             <Route
               path="/deltager/:deltagerId/resultater"
               element={<DeltagerResultaterPage />}
             />
-
             <Route path="/resultater" element={<RegistrerResultaterPage />} />
-
             <Route path="/deltagere" element={<DeltagereListTable />} />
             <Route path="/opret" element={<CreateUserPage />} />
-
             <Route path="*" element={<h2>Not Found</h2>} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />

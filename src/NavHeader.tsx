@@ -82,6 +82,7 @@ export default function NavHeader() {
     </Menu>
   );
 
+  // @TODO probably could delete or change this part
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -160,12 +161,11 @@ export default function NavHeader() {
                     aria-label="open drawer"
                     aria-expanded={open ? "true" : undefined}
                     onClick={handleClick}
-                    sx={{ typography: "body2" }} // Set typography variant to body2 to make text smaller
+                    sx={{ typography: "body2" }}
                   >
                     <Typography color="white" sx={{ mr: 1 }}>
                       Admin panel
                     </Typography>{" "}
-                    {/* Use Typography for consistent styling */}
                     <MenuIcon />
                   </IconButton>
                   <Menu
@@ -178,7 +178,6 @@ export default function NavHeader() {
                     onClose={handleClose}
                     TransitionComponent={Fade}
                   >
-                    {/* Use Link from react-router-dom to navigate to routes */}
                     <MenuItem
                       component={Link}
                       to="/Opret"

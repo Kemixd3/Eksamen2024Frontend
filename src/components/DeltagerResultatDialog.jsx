@@ -21,7 +21,7 @@ const DeltagerResultatDialog = ({
   const [disciplinType, setDisciplinType] = useState("");
   const [resultatValue, setResultatValue] = useState("");
   const [distance, setDistance] = useState("");
-  const [timeInMinutes, setTimeInMinutes] = useState(""); // State to hold time in minutes
+  const [timeInMinutes, setTimeInMinutes] = useState("");
   const [date, setDate] = useState("");
   const { showSnackbar } = useSnackbar();
 
@@ -59,10 +59,12 @@ const DeltagerResultatDialog = ({
       result.points = resultatValue;
     } else if (disciplinType === "DISTANCE") {
       result.distance = parseInt(distance);
-      result.timeTaken = parseInt(timeInMinutes); // Convert timeInMinutes to integer
+      // Convert timeInMinutes to payload integer
+      result.timeTaken = parseInt(timeInMinutes);
     } else if (disciplinType === "TIME") {
       result.dato = date;
-      result.timeTaken = parseInt(timeInMinutes); // Convert timeInMinutes to integer
+      // Convert timeInMinutes to payload integer
+      result.timeTaken = parseInt(timeInMinutes);
     }
 
     try {
@@ -148,7 +150,7 @@ const DeltagerResultatDialog = ({
               margin="normal"
               type="number"
               InputProps={{
-                inputProps: { min: 0 }, // Ensure non-negative input
+                inputProps: { min: 0 },
               }}
             />
           </>
