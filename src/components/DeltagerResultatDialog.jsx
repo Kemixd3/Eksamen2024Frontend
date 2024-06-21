@@ -58,7 +58,7 @@ const DeltagerResultatDialog = ({
     if (disciplinType === "POINT") {
       result.points = resultatValue;
     } else if (disciplinType === "DISTANCE") {
-      result.distance = distance;
+      result.distance = parseInt(distance);
       result.timeTaken = parseInt(timeInMinutes); // Convert timeInMinutes to integer
     } else if (disciplinType === "TIME") {
       result.dato = date;

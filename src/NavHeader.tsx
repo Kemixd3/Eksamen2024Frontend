@@ -102,9 +102,7 @@ export default function NavHeader() {
       <MenuItem>
         <StyledNavLink to="/">Home</StyledNavLink>
       </MenuItem>
-      <MenuItem>
-        <StyledNavLink to="/movies">Dont know</StyledNavLink>
-      </MenuItem>
+
       {!auth.isLoggedIn() ? (
         <MenuItem>
           <StyledNavLink to="/login">Login</StyledNavLink>
@@ -144,7 +142,7 @@ export default function NavHeader() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/movies">Dont know</StyledNavLink>
+
             {!auth.isLoggedIn() ? (
               <StyledNavLink to="/login">Login</StyledNavLink>
             ) : (
@@ -194,6 +192,14 @@ export default function NavHeader() {
                       onClick={handleClose}
                     >
                       Søg efter deltagere
+                    </MenuItem>
+
+                    <MenuItem
+                      component={Link}
+                      to="/resultater"
+                      onClick={handleClose}
+                    >
+                      Batch add resultater
                     </MenuItem>
                   </Menu>
                 </div>
