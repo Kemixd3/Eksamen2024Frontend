@@ -216,11 +216,13 @@ const RegistrerResultaterPage = () => {
             Tilføj Resultat
           </Button>
           <Button type="submit" variant="contained" fullWidth>
-            Registrer Resultater
+            Registrer Resultater Batch
           </Button>
         </form>
         <Box sx={{ mt: 3 }}>
-          <Typography variant="h6">Tilføjede Resultater:</Typography>
+          <Typography variant="h6">
+            Disse resultater vil blive tilføjet:
+          </Typography>
           {results.map((result, index) => (
             <Box key={index} sx={{ mb: 1 }}>
               <Typography color="black">{`User: ${
